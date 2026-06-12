@@ -168,3 +168,7 @@ python export_value_mappings_csv.py value_mappings.csv
 python export_value_mappings_csv.py value_mappings.csv --group-name "Example Codes"
 python export_value_mappings_csv.py value_mappings.csv --scheme-id SAP --scheme-agency-id ERP
 ```
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE` for details.
