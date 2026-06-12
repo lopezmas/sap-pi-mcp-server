@@ -1,0 +1,563 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ValueMappingIn" targetNamespace="http://sap.com/xi/BASIS" xmlns:p1="http://sap.com/xi/BASIS">
+  <wsdl:documentation/>
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sap.com/xi/BASIS" xmlns="http://sap.com/xi/BASIS" xmlns:p3="http://sap.com/xi/BASIS/Global">
+      <xsd:import namespace="http://sap.com/xi/BASIS/Global"/>
+      <xsd:element name="ConfigurationObjectModifyResponse" type="ConfigurationObjectModifyOut"/>
+      <xsd:element name="ValueMappingCreateRequest" type="ValueMappingCreateChangeIn"/>
+      <xsd:element name="ValueMappingOpenForEditRequest" type="ValueMappingDeleteOpenForEditIn"/>
+      <xsd:element name="ValueMappingQueryRequest" type="ValueMappingQueryIn"/>
+      <xsd:element name="ValueMappingQueryResponse" type="ValueMappingQueryOut"/>
+      <xsd:element name="LogMessageCollection" type="LogMessageCollection"/>
+      <xsd:element name="ValueMappingCheckRequest" type="ValueMappingIdentifierCollection"/>
+      <xsd:element name="ValueMappingReadRequest" type="ValueMappingReadIn"/>
+      <xsd:element name="ValueMappingRevertRequest" type="ValueMappingIdentifierCollection"/>
+      <xsd:element name="ValueMappingOpenForEditResponse" type="ValueMappingOpenForEditOut"/>
+      <xsd:element name="ValueMappingChangeRequest" type="ValueMappingCreateChangeIn"/>
+      <xsd:element name="ValueMappingDeleteRequest" type="ValueMappingDeleteOpenForEditIn"/>
+      <xsd:element name="ValueMappingReadResponse" type="ValueMappingReadOut"/>
+      <xsd:simpleType name="ReceiverRuleID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="UserID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">User Account ID Content</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="12"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CommunicationPartyID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ValueMappingID">
+        <xsd:restriction base="xsd:token">
+          <xsd:length value="36"/>
+          <xsd:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ReadContextCode">
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="User"/>
+          <xsd:enumeration value="Active"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ProcessComponentID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LANGUAGEINDEPENDENT_Text">
+        <xsd:restriction base="xsd:string"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="ValueMappingRepresentation.Content">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="100"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DesignObjectName">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="120"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LogMessageClassificationCode">
+        <xsd:restriction base="xsd:token"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="CommunicationComponentComponentID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ConfigurationScenarioID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ChangeListChangeListID">
+        <xsd:restriction base="xsd:token">
+          <xsd:length value="36"/>
+          <xsd:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DesignObjectNamespace">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CommunicationChannelChannelID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ChangeListID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListChangeListID"/>
+          <xsd:element minOccurs="0" name="Name" type="p3:LANGUAGEINDEPENDENT_LONG_Name"/>
+          <xsd:element minOccurs="0" name="Description" type="p3:LONG_Description"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMappingIdentifierCollection">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueMappingID" type="ValueMappingID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageCommunicationParty">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="PartyID" type="CommunicationPartyID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMappingCreateChangeIn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListChangeListID"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueMapping" type="RestrictedValueMapping"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ConfigurationObjectModifyOut">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListID"/>
+          <xsd:element minOccurs="0" name="LogMessageCollection" type="LogMessageCollection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMappingDeleteOpenForEditIn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListChangeListID"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueMappingID" type="ValueMappingID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageCollection">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessage" type="LogMessage"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageChangeList" type="LogMessageChangeList"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageParty" type="LogMessageCommunicationParty"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageProcessComponent" type="LogMessageProcessComponent"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageBusinessSystem" type="LogMessageCommunicationComponent"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageBusinessComponent" type="LogMessageCommunicationComponent"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageIntegrationProcess" type="LogMessageCommunicationComponent"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageCommunicationChannel" type="LogMessageCommunicationChannel"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageSenderAgreement" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverAgreement" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageDirectConnection" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageIntegratedConfiguration" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverDetermination" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverRule" type="LogMessageReceiverRule"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageInterfaceDetermination" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageValueMapping" type="LogMessageValueMapping"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageConfigurationScenario" type="LogMessageConfigurationScenario"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MessageHeaderID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SenderPartyID" type="CommunicationPartyID"/>
+          <xsd:element name="SenderComponentID" type="CommunicationComponentComponentID"/>
+          <xsd:element name="InterfaceName" type="DesignObjectName"/>
+          <xsd:element name="InterfaceNamespace" type="DesignObjectNamespace"/>
+          <xsd:element minOccurs="0" name="ReceiverPartyID" type="CommunicationPartyID"/>
+          <xsd:element minOccurs="0" name="ReceiverComponentID" type="CommunicationComponentComponentID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageValueMapping">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ValueMappingID" type="ValueMappingID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CommunicationChannelID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="PartyID" type="CommunicationPartyID"/>
+          <xsd:element name="ComponentID" type="CommunicationComponentComponentID"/>
+          <xsd:element name="ChannelID" type="CommunicationChannelChannelID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageProcessComponent">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ProcessComponentID" type="ProcessComponentID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMappingOpenForEditOut">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListID"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueMapping" type="ValueMapping"/>
+          <xsd:element minOccurs="0" name="LogMessageCollection" type="LogMessageCollection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessage">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMappingReadOut">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueMapping" type="ValueMapping"/>
+          <xsd:element minOccurs="0" name="LogMessageCollection" type="LogMessageCollection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageCommunicationChannel">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CommunicationChannelID" type="CommunicationChannelID"/>
+          <xsd:element name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageMessageHeader">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="MessageHeader" type="MessageHeaderID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMappingQueryIn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ValueMappingID" type="ValueMappingID"/>
+          <xsd:element minOccurs="0" name="Description" type="p3:LONG_Description"/>
+          <xsd:element minOccurs="0" name="AdministrativeData" type="ObjectAdministrativeData"/>
+          <xsd:element minOccurs="0" name="GroupName" type="p3:LANGUAGEINDEPENDENT_MEDIUM_Name"/>
+          <xsd:element minOccurs="0" name="Representation" type="ValueMappingRepresentation"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMappingRepresentation">
+        <xsd:simpleContent>
+          <xsd:extension base="ValueMappingRepresentation.Content">
+            <xsd:attribute name="schemeID">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:token">
+                  <xsd:maxLength value="120"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute name="schemeAgencyID">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:token">
+                  <xsd:maxLength value="130"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:attribute>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="RestrictedValueMapping">
+        <xsd:sequence>
+          <xsd:element name="MasterLanguage" type="p3:LanguageCode"/>
+          <xsd:element minOccurs="0" name="AdministrativeData" type="RestrictedObjectAdministrativeData"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Description" type="p3:LONG_Description"/>
+          <xsd:element minOccurs="0" name="ValueMappingID" type="ValueMappingID"/>
+          <xsd:element minOccurs="0" name="GroupName" type="p3:LANGUAGEINDEPENDENT_MEDIUM_Name"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Representation" type="ValueMappingRepresentation"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMapping">
+        <xsd:sequence>
+          <xsd:element name="MasterLanguage" type="p3:LanguageCode"/>
+          <xsd:element minOccurs="0" name="AdministrativeData" type="ObjectAdministrativeData"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Description" type="p3:LONG_Description"/>
+          <xsd:element minOccurs="0" name="ValueMappingID" type="ValueMappingID"/>
+          <xsd:element minOccurs="0" name="GroupName" type="p3:LANGUAGEINDEPENDENT_MEDIUM_Name"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Representation" type="ValueMappingRepresentation"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CommunicationComponentID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="PartyID" type="CommunicationPartyID"/>
+          <xsd:element name="ComponentID" type="CommunicationComponentComponentID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMappingQueryOut">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueMappingID" type="ValueMappingID"/>
+          <xsd:element minOccurs="0" name="LogMessageCollection" type="LogMessageCollection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageConfigurationScenario">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ConfigurationScenarioID" type="ConfigurationScenarioID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ObjectAdministrativeData">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">ObjectAdministrativeData</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ResponsibleUserAccountID" type="UserID"/>
+          <xsd:element minOccurs="0" name="LastChangeUserAccountID" type="UserID"/>
+          <xsd:element minOccurs="0" name="LastChangeDateTime" type="p3:GLOBAL_DateTime"/>
+          <xsd:element minOccurs="0" name="FolderPathID" type="p3:LANGUAGEINDEPENDENT_Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageItem">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SeverityCode" type="p3:LogItemSeverityCode"/>
+          <xsd:element minOccurs="0" name="ClassificationCode" type="LogMessageClassificationCode"/>
+          <xsd:element minOccurs="0" name="Message" type="p3:Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageChangeList">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValueMappingReadIn">
+        <xsd:sequence>
+          <xsd:element default="User" minOccurs="0" name="ReadContext" type="ReadContextCode"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueMappingID" type="ValueMappingID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RestrictedObjectAdministrativeData">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">ObjectAdministrativeData</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ResponsibleUserAccountID" type="UserID"/>
+          <xsd:element minOccurs="0" name="FolderPathID" type="LANGUAGEINDEPENDENT_Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageReceiverRule">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ReceiverRuleID" type="ReceiverRuleID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageCommunicationComponent">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CommunicationComponentID" type="CommunicationComponentID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sap.com/xi/BASIS/Global" xmlns="http://sap.com/xi/BASIS/Global">
+      <xsd:simpleType name="GLOBAL_DateTime">
+        <xsd:restriction base="xsd:dateTime">
+          <xsd:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(.[0-9]{1,7})?Z"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LANGUAGEINDEPENDENT_LONG_Name">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0"/>
+          <xsd:maxLength value="80"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Indicator">
+        <xsd:restriction base="xsd:boolean"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="LogItemSeverityCode">
+        <xsd:restriction base="xsd:token">
+          <xsd:length value="1"/>
+          <xsd:enumeration value="1"/>
+          <xsd:enumeration value="2"/>
+          <xsd:enumeration value="3"/>
+          <xsd:enumeration value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LanguageCode">
+        <xsd:restriction base="xsd:language">
+          <xsd:length value="2"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LANGUAGEINDEPENDENT_MEDIUM_Name">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0"/>
+          <xsd:maxLength value="40"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LONG_Description.Content">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LANGUAGEINDEPENDENT_Text">
+        <xsd:restriction base="xsd:string"/>
+      </xsd:simpleType>
+      <xsd:complexType name="Text">
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:string">
+            <xsd:attribute name="languageCode" type="LanguageCode"/>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="LanguageCodeContextElements">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="LanguageInstalledIndicator" type="Indicator"/>
+          <xsd:element minOccurs="0" name="LanguageAllowedIndicator" type="Indicator"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LONG_Description">
+        <xsd:simpleContent>
+          <xsd:extension base="LONG_Description.Content">
+            <xsd:attribute name="languageCode" type="LanguageCode"/>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ValueMappingCheckRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingCheckRequest" name="ValueMappingCheckRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingRevertRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingRevertRequest" name="ValueMappingRevertRequest"/>
+  </wsdl:message>
+  <wsdl:message name="LogMessageCollection">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:LogMessageCollection" name="LogMessageCollection"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingQueryRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingQueryRequest" name="ValueMappingQueryRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingQueryResponse">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingQueryResponse" name="ValueMappingQueryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingCreateRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingCreateRequest" name="ValueMappingCreateRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingChangeRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingChangeRequest" name="ValueMappingChangeRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingOpenForEditRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingOpenForEditRequest" name="ValueMappingOpenForEditRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingOpenForEditResponse">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingOpenForEditResponse" name="ValueMappingOpenForEditResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingReadRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingReadRequest" name="ValueMappingReadRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingReadResponse">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingReadResponse" name="ValueMappingReadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ValueMappingDeleteRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ValueMappingDeleteRequest" name="ValueMappingDeleteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConfigurationObjectModifyResponse">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ConfigurationObjectModifyResponse" name="ConfigurationObjectModifyResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ValueMappingIn">
+    <wsdl:documentation/>
+    <wsdl:operation name="Check">
+      <wsdl:input message="p1:ValueMappingCheckRequest"/>
+      <wsdl:output message="p1:LogMessageCollection"/>
+    </wsdl:operation>
+    <wsdl:operation name="Revert">
+      <wsdl:input message="p1:ValueMappingRevertRequest"/>
+      <wsdl:output message="p1:LogMessageCollection"/>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:input message="p1:ValueMappingQueryRequest"/>
+      <wsdl:output message="p1:ValueMappingQueryResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <wsdl:input message="p1:ValueMappingCreateRequest"/>
+      <wsdl:output message="p1:ConfigurationObjectModifyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Change">
+      <wsdl:input message="p1:ValueMappingChangeRequest"/>
+      <wsdl:output message="p1:ConfigurationObjectModifyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="OpenForEdit">
+      <wsdl:input message="p1:ValueMappingOpenForEditRequest"/>
+      <wsdl:output message="p1:ValueMappingOpenForEditResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Read">
+      <wsdl:input message="p1:ValueMappingReadRequest"/>
+      <wsdl:output message="p1:ValueMappingReadResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="p1:ValueMappingDeleteRequest"/>
+      <wsdl:output message="p1:ConfigurationObjectModifyResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ValueMappingInBinding" type="p1:ValueMappingIn">
+    <soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Check">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Revert">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Change">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenForEdit">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Read">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ValueMappingInService">
+    <wsdl:port binding="bprf:ValueMappingInBinding" name="ValueMappingInPort" xmlns:bprf="http://sap.com/xi/BASIS">
+      <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="http://example.invalid:50000/ValueMappingInService/ValueMappingInImplBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

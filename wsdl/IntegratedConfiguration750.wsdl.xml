@@ -1,0 +1,795 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="IntegratedConfiguration750In" targetNamespace="http://sap.com/xi/BASIS" xmlns:p1="http://sap.com/xi/BASIS" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <wsdl:documentation/>
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sap.com/xi/BASIS" xmlns="http://sap.com/xi/BASIS" xmlns:p6="http://sap.com/xi/BASIS/Global">
+      <xsd:import namespace="http://sap.com/xi/BASIS/Global"/>
+      <xsd:element name="ConfigurationObjectModifyResponse" type="ConfigurationObjectModifyOut"/>
+      <xsd:element name="IntegratedConfiguration750ReadResponse" type="IntegratedConfiguration750ReadOut"/>
+      <xsd:element name="IntegratedConfigurationQueryResponse" type="IntegratedConfigurationQueryOut"/>
+      <xsd:element name="IntegratedConfigurationDeleteRequest" type="IntegratedConfigurationDeleteOpenForEditIn"/>
+      <xsd:element name="IntegratedConfiguration750OpenForEditResponse" type="IntegratedConfiguration750OpenForEditOut"/>
+      <xsd:element name="IntegratedConfigurationReadRequest" type="IntegratedConfigurationReadIn"/>
+      <xsd:element name="LogMessageCollection" type="LogMessageCollection"/>
+      <xsd:element name="IntegratedConfigurationRevertRequest" type="IntegratedConfigurationIdentifierCollection"/>
+      <xsd:element name="IntegratedConfiguration750CreateRequest" type="IntegratedConfiguration750CreateChangeIn"/>
+      <xsd:element name="IntegratedConfigurationOpenForEditRequest" type="IntegratedConfigurationDeleteOpenForEditIn"/>
+      <xsd:element name="IntegratedConfiguration750ChangeRequest" type="IntegratedConfiguration750CreateChangeIn"/>
+      <xsd:element name="IntegratedConfigurationQueryRequest" type="IntegratedConfigurationQueryIn"/>
+      <xsd:element name="IntegratedConfigurationCheckRequest" type="IntegratedConfigurationIdentifierCollection"/>
+      <xsd:simpleType name="Prefix">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CommunicationComponentComponentID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="GenericPropertyID">
+        <xsd:restriction base="xsd:token"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="ChangeListChangeListID">
+        <xsd:restriction base="xsd:token">
+          <xsd:length value="36"/>
+          <xsd:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ValueMappingID">
+        <xsd:restriction base="xsd:token">
+          <xsd:length value="36"/>
+          <xsd:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ReadContextCode">
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="User"/>
+          <xsd:enumeration value="Active"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ReceiverRuleID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ProcessComponentID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PropertyName">
+        <xsd:restriction base="xsd:string"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="VirusScanCode">
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="Use Global"/>
+          <xsd:enumeration value="No Virus Scan"/>
+          <xsd:enumeration value="Virus Scan by Adapter"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CommunicationPartyID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ConfigurationScenarioID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LogMessageClassificationCode">
+        <xsd:restriction base="xsd:token"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="DesignObjectName">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="120"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Operation">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="120"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="UserID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">User Account ID Content</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="12"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DesignObjectNamespace">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LANGUAGEINDEPENDENT_Text">
+        <xsd:restriction base="xsd:string"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="NamespaceURI">
+        <xsd:restriction base="xsd:anyURI"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="QualityOfService">
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="EOIO"/>
+          <xsd:enumeration value="EO"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CommunicationChannelChannelID">
+        <xsd:restriction base="xsd:token">
+          <xsd:maxLength value="60"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="NoReceiverBehaviour">
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="Error Message"/>
+          <xsd:enumeration value="Specified Receiver"/>
+          <xsd:enumeration value="Ignore"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ExtractorTypeCode">
+        <xsd:restriction base="xsd:token">
+          <xsd:enumeration value="XPath"/>
+          <xsd:enumeration value="Context Object"/>
+          <xsd:enumeration value="Technical Context Object"/>
+          <xsd:enumeration value="Constant"/>
+          <xsd:enumeration value="Message Header Field"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SoftwareComponentVersionID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">Universally Unique Identifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+          <xsd:length value="36"/>
+          <xsd:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ReceiverDeterminationRule">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Operation" type="Operation"/>
+          <xsd:element minOccurs="0" name="Condition" type="Condition"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Receiver" type="CommunicationPartnerExtractor"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OutboundProcessing">
+        <xsd:sequence>
+          <xsd:element name="Receiver" type="CommunicationComponentID">
+            <xsd:annotation>
+              <xsd:documentation>Specifiy receiver for outbound processing</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ReceiverInterface" type="DesignObjectID"/>
+          <xsd:element minOccurs="0" name="CommunicationChannel" type="CommunicationChannelID"/>
+          <xsd:element minOccurs="0" name="SchemaValidationIndicator" type="p6:Indicator"/>
+          <xsd:element minOccurs="0" name="VirusScan" type="VirusScanCode"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificAttribute" type="GenericProperty"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificTableAttribute" type="GenericPropertyTable"/>
+          <xsd:element minOccurs="0" name="HeaderMapping" type="HeaderMapping"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageCommunicationChannel">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CommunicationChannelID" type="CommunicationChannelID"/>
+          <xsd:element name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Receivers750">
+        <xsd:sequence>
+          <xsd:element default="false" minOccurs="0" name="ReceiverWildcardIndicator" type="p6:Indicator"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ReceiverRule" type="ReceiverDeterminationRule"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ExternalReceiverRule" type="ReceiverDeterminationInclude"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="DynamicReceiverRule" type="ReceiverDeterminationMapping"/>
+          <xsd:element minOccurs="0" name="NoReceiverBehaviour" type="NoReceiverBehaviour"/>
+          <xsd:element minOccurs="0" name="NoReceiverReceiver" type="CommunicationPartnerExtractor"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageItem">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SeverityCode" type="p6:LogItemSeverityCode"/>
+          <xsd:element minOccurs="0" name="ClassificationCode" type="LogMessageClassificationCode"/>
+          <xsd:element minOccurs="0" name="Message" type="p6:Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageChangeList">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageReceiverRule">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ReceiverRuleID" type="ReceiverRuleID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfigurationIdentifierCollection">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IntegratedConfigurationID" type="MessageHeaderID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageConfigurationScenario">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ConfigurationScenarioID" type="ConfigurationScenarioID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfigurationDeleteOpenForEditIn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListChangeListID"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IntegratedConfigurationID" type="MessageHeaderID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AtomicCondition">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Operator" type="p6:CompareOperatorCode"/>
+          <xsd:element minOccurs="0" name="LeftExtractor" type="Extractor"/>
+          <xsd:element minOccurs="0" name="RightExtractor" type="Extractor"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfigurationReceiverInterfaceRule">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Operation" type="Operation"/>
+          <xsd:element minOccurs="0" name="Condition" type="Condition"/>
+          <xsd:element minOccurs="0" name="Mapping" type="DesignObjectID"/>
+          <xsd:element minOccurs="0" name="MappingParameters" type="MappingParameters"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Interface" type="DesignObjectID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReceiverInterfaces">
+        <xsd:sequence>
+          <xsd:element name="Receiver" type="CommunicationComponentID"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ReceiverInterfaceRule" type="IntegratedConfigurationReceiverInterfaceRule"/>
+          <xsd:element minOccurs="0" name="QualityOfService" type="QualityOfService"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ConfigurationObjectModifyOut">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListID"/>
+          <xsd:element minOccurs="0" name="LogMessageCollection" type="LogMessageCollection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReceiverDeterminationMapping">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Operation" type="Operation"/>
+          <xsd:element minOccurs="0" name="Mapping" type="DesignObjectID"/>
+          <xsd:element minOccurs="0" name="MappingParamters" type="MappingParameters"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ObjectAdministrativeData">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">ObjectAdministrativeData</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ResponsibleUserAccountID" type="UserID"/>
+          <xsd:element minOccurs="0" name="LastChangeUserAccountID" type="UserID"/>
+          <xsd:element minOccurs="0" name="LastChangeDateTime" type="p6:GLOBAL_DateTime"/>
+          <xsd:element minOccurs="0" name="FolderPathID" type="p6:LANGUAGEINDEPENDENT_Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CommunicationChannelID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="PartyID" type="CommunicationPartyID"/>
+          <xsd:element name="ComponentID" type="CommunicationComponentComponentID"/>
+          <xsd:element name="ChannelID" type="CommunicationChannelChannelID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageCommunicationParty">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="PartyID" type="CommunicationPartyID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AtomicConditionBlock">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="AtomicCondition" type="AtomicCondition"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MessageHeaderID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SenderPartyID" type="CommunicationPartyID"/>
+          <xsd:element name="SenderComponentID" type="CommunicationComponentComponentID"/>
+          <xsd:element name="InterfaceName" type="DesignObjectName"/>
+          <xsd:element name="InterfaceNamespace" type="DesignObjectNamespace"/>
+          <xsd:element minOccurs="0" name="ReceiverPartyID" type="CommunicationPartyID"/>
+          <xsd:element minOccurs="0" name="ReceiverComponentID" type="CommunicationComponentComponentID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageValueMapping">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ValueMappingID" type="ValueMappingID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HeaderMapping">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Sender" type="CommunicationPartnerExtractor"/>
+          <xsd:element minOccurs="0" name="Receiver" type="CommunicationPartnerExtractor"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfigurationQueryOut">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IntegratedConfigurationID" type="MessageHeaderID"/>
+          <xsd:element minOccurs="0" name="LogMessageCollection" type="LogMessageCollection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="InboundProcessing">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SenderInterfaceSoftwareComponentVersion" type="SoftwareComponentVersionID"/>
+          <xsd:element minOccurs="0" name="CommunicationChannel" type="CommunicationChannelID"/>
+          <xsd:element minOccurs="0" name="SchemaValidationIndicator" type="p6:Indicator"/>
+          <xsd:element minOccurs="0" name="VirusScan" type="VirusScanCode"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificAttribute" type="GenericProperty"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="AdapterSpecificTableAttribute" type="GenericPropertyTable"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="AssignedUser" type="UserID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfiguration750OpenForEditOut">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListID"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IntegratedConfiguration" type="IntegratedConfiguration750"/>
+          <xsd:element minOccurs="0" name="LogMessageCollection" type="LogMessageCollection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RestrictedGenericProperty">
+        <xsd:sequence>
+          <xsd:element name="Name" type="GenericPropertyID"/>
+          <xsd:element minOccurs="0" name="Value" type="p6:LANGUAGEINDEPENDENT_Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ChannelProperty">
+        <xsd:sequence>
+          <xsd:element name="Name" type="GenericPropertyID"/>
+          <xsd:element minOccurs="0" name="Value" type="CommunicationChannelID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RestrictedIntegratedConfiguration750">
+        <xsd:sequence>
+          <xsd:element name="MasterLanguage" type="p6:LanguageCode"/>
+          <xsd:element minOccurs="0" name="AdministrativeData" type="RestrictedObjectAdministrativeData"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Description" type="p6:LONG_Description"/>
+          <xsd:element name="IntegratedConfigurationID" type="MessageHeaderID"/>
+          <xsd:element minOccurs="0" name="InboundProcessing" type="InboundProcessing"/>
+          <xsd:element minOccurs="0" name="Receivers" type="Receivers750"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ReceiverInterfaces" type="ReceiverInterfaces"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="OutboundProcessing" type="OutboundProcessing"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="PrefixNamespaceMapping" type="PrefixNamespaceMapping"/>
+          <xsd:element minOccurs="0" name="Logging" type="AdvancedSettings"/>
+          <xsd:element minOccurs="0" name="Staging" type="AdvancedSettings"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfigurationQueryIn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="IntegratedConfigurationID" type="MessageHeaderID"/>
+          <xsd:element minOccurs="0" name="Description" type="p6:LONG_Description"/>
+          <xsd:element minOccurs="0" name="AdministrativeData" type="ObjectAdministrativeData"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GenericTableRowTableCell">
+        <xsd:sequence>
+          <xsd:element name="ColumnName" type="p6:LANGUAGEINDEPENDENT_Name"/>
+          <xsd:element minOccurs="0" name="Value" type="p6:LANGUAGEINDEPENDENT_Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CommunicationPartnerExtractor">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CommunicationParty" type="Extractor"/>
+          <xsd:element minOccurs="0" name="CommunicationPartySchema" type="Extractor"/>
+          <xsd:element minOccurs="0" name="CommunicationPartyAgency" type="Extractor"/>
+          <xsd:element minOccurs="0" name="CommunicationComponent" type="Extractor"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageMessageHeader">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="MessageHeader" type="MessageHeaderID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GenericProperty">
+        <xsd:sequence>
+          <xsd:element name="Name" type="PropertyName"/>
+          <xsd:element minOccurs="0" name="Namespace" type="NamespaceURI"/>
+          <xsd:element minOccurs="0" name="Value" type="p6:LANGUAGEINDEPENDENT_Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RestrictedObjectAdministrativeData">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">ObjectAdministrativeData</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ResponsibleUserAccountID" type="UserID"/>
+          <xsd:element minOccurs="0" name="FolderPathID" type="LANGUAGEINDEPENDENT_Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessage">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageProcessComponent">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ProcessComponentID" type="ProcessComponentID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageCollection">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessage" type="LogMessage"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageChangeList" type="LogMessageChangeList"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageParty" type="LogMessageCommunicationParty"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageProcessComponent" type="LogMessageProcessComponent"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageBusinessSystem" type="LogMessageCommunicationComponent"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageBusinessComponent" type="LogMessageCommunicationComponent"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageIntegrationProcess" type="LogMessageCommunicationComponent"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageCommunicationChannel" type="LogMessageCommunicationChannel"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageSenderAgreement" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverAgreement" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageDirectConnection" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageIntegratedConfiguration" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverDetermination" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageReceiverRule" type="LogMessageReceiverRule"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageInterfaceDetermination" type="LogMessageMessageHeader"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageValueMapping" type="LogMessageValueMapping"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="LogMessageConfigurationScenario" type="LogMessageConfigurationScenario"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfiguration750ReadOut">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IntegratedConfiguration" type="IntegratedConfiguration750"/>
+          <xsd:element minOccurs="0" name="LogMessageCollection" type="LogMessageCollection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfiguration750">
+        <xsd:sequence>
+          <xsd:element name="MasterLanguage" type="p6:LanguageCode"/>
+          <xsd:element minOccurs="0" name="AdministrativeData" type="ObjectAdministrativeData"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Description" type="p6:LONG_Description"/>
+          <xsd:element name="IntegratedConfigurationID" type="MessageHeaderID"/>
+          <xsd:element minOccurs="0" name="InboundProcessing" type="InboundProcessing"/>
+          <xsd:element minOccurs="0" name="Receivers" type="Receivers750"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ReceiverInterfaces" type="ReceiverInterfaces"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="OutboundProcessing" type="OutboundProcessing"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="PrefixNamespaceMapping" type="PrefixNamespaceMapping"/>
+          <xsd:element minOccurs="0" name="Logging" type="AdvancedSettings"/>
+          <xsd:element minOccurs="0" name="Staging" type="AdvancedSettings"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Condition">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="AtomicConditionBlock" type="AtomicConditionBlock"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegerProperty">
+        <xsd:sequence>
+          <xsd:element name="Name" type="GenericPropertyID"/>
+          <xsd:element minOccurs="0" name="Value" type="p6:IntegerValue"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfigurationReadIn">
+        <xsd:sequence>
+          <xsd:element default="User" minOccurs="0" name="ReadContext" type="ReadContextCode"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IntegratedConfigurationID" type="MessageHeaderID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MappingParameters">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Integer" type="IntegerProperty"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="String" type="RestrictedGenericProperty"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Channel" type="ChannelProperty"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DesignObjectID">
+        <xsd:sequence>
+          <xsd:element name="Name" type="DesignObjectName"/>
+          <xsd:element name="Namespace" type="DesignObjectNamespace"/>
+          <xsd:element minOccurs="0" name="SoftwareComponentVersionID" type="SoftwareComponentVersionID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GenericPropertyTable">
+        <xsd:sequence>
+          <xsd:element name="Name" type="PropertyName"/>
+          <xsd:element minOccurs="0" name="Namespace" type="NamespaceURI"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueTableRow" type="GenericTableRow"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PrefixNamespaceMapping">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="URI" type="DesignObjectNamespace"/>
+          <xsd:element minOccurs="0" name="Prefix" type="Prefix"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReceiverDeterminationInclude">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Operation" type="Operation"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ReceiverRuleID" type="ReceiverRuleID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Extractor">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="TypeID" type="ExtractorTypeCode"/>
+          <xsd:element minOccurs="0" name="Value" type="p6:LANGUAGEINDEPENDENT_Text"/>
+          <xsd:element minOccurs="0" name="Datatype" type="p6:LANGUAGEINDEPENDENT_Text"/>
+          <xsd:element minOccurs="0" name="ContextObjectName" type="DesignObjectName"/>
+          <xsd:element minOccurs="0" name="ContextObjectNamespace" type="DesignObjectNamespace"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IntegratedConfiguration750CreateChangeIn">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListChangeListID"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IntegratedConfiguration" type="RestrictedIntegratedConfiguration750"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ChangeListID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ChangeListID" type="ChangeListChangeListID"/>
+          <xsd:element minOccurs="0" name="Name" type="p6:LANGUAGEINDEPENDENT_LONG_Name"/>
+          <xsd:element minOccurs="0" name="Description" type="p6:LONG_Description"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CommunicationComponentID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="PartyID" type="CommunicationPartyID"/>
+          <xsd:element name="ComponentID" type="CommunicationComponentComponentID"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GenericTableRow">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueTableCell" type="GenericTableRowTableCell"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageCommunicationComponent">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CommunicationComponentID" type="CommunicationComponentID"/>
+          <xsd:element minOccurs="0" name="LogMessageItem" type="LogMessageItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AdvancedSettings">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="UseGlobal" type="p6:Indicator"/>
+          <xsd:element minOccurs="0" name="SpecificConfiguration" type="p6:LANGUAGEINDEPENDENT_Text"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sap.com/xi/BASIS/Global" xmlns="http://sap.com/xi/BASIS/Global">
+      <xsd:simpleType name="LanguageCode">
+        <xsd:restriction base="xsd:language">
+          <xsd:length value="2"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LANGUAGEINDEPENDENT_Name">
+        <xsd:restriction base="xsd:string"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="LONG_Description.Content">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="IntegerValue">
+        <xsd:restriction base="xsd:int"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="GLOBAL_DateTime">
+        <xsd:restriction base="xsd:dateTime">
+          <xsd:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(.[0-9]{1,7})?Z"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CompareOperatorCode">
+        <xsd:restriction base="xsd:token">
+          <xsd:length value="2"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LANGUAGEINDEPENDENT_LONG_Name">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0"/>
+          <xsd:maxLength value="80"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Indicator">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">Indicator is the representation of a situation that has exactly two mutually exclusive Boolean values.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:boolean"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="LogItemSeverityCode">
+        <xsd:restriction base="xsd:token">
+          <xsd:length value="1"/>
+          <xsd:enumeration value="1"/>
+          <xsd:enumeration value="2"/>
+          <xsd:enumeration value="3"/>
+          <xsd:enumeration value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LANGUAGEINDEPENDENT_Text">
+        <xsd:restriction base="xsd:string"/>
+      </xsd:simpleType>
+      <xsd:complexType name="LONG_Description">
+        <xsd:simpleContent>
+          <xsd:extension base="LONG_Description.Content">
+            <xsd:attribute name="languageCode" type="LanguageCode"/>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="Text">
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:string">
+            <xsd:attribute name="languageCode" type="LanguageCode"/>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IntegratedConfigurationReadRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfigurationReadRequest" name="IntegratedConfigurationReadRequest"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfiguration750ReadResponse">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfiguration750ReadResponse" name="IntegratedConfiguration750ReadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfigurationDeleteRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfigurationDeleteRequest" name="IntegratedConfigurationDeleteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfigurationOpenForEditRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfigurationOpenForEditRequest" name="IntegratedConfigurationOpenForEditRequest"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfiguration750OpenForEditResponse">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfiguration750OpenForEditResponse" name="IntegratedConfiguration750OpenForEditResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfigurationQueryRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfigurationQueryRequest" name="IntegratedConfigurationQueryRequest"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfigurationQueryResponse">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfigurationQueryResponse" name="IntegratedConfigurationQueryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfiguration750CreateRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfiguration750CreateRequest" name="IntegratedConfiguration750CreateRequest"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfigurationRevertRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfigurationRevertRequest" name="IntegratedConfigurationRevertRequest"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfigurationCheckRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfigurationCheckRequest" name="IntegratedConfigurationCheckRequest"/>
+  </wsdl:message>
+  <wsdl:message name="LogMessageCollection">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:LogMessageCollection" name="LogMessageCollection"/>
+  </wsdl:message>
+  <wsdl:message name="IntegratedConfiguration750ChangeRequest">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:IntegratedConfiguration750ChangeRequest" name="IntegratedConfiguration750ChangeRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConfigurationObjectModifyResponse">
+    <wsdl:documentation/>
+    <wsdl:part element="p1:ConfigurationObjectModifyResponse" name="ConfigurationObjectModifyResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="IntegratedConfiguration750In">
+    <wsdl:documentation/>
+    <wsdl:operation name="Read">
+      <wsdl:documentation/>
+      <wsdl:input message="p1:IntegratedConfigurationReadRequest"/>
+      <wsdl:output message="p1:IntegratedConfiguration750ReadResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:documentation/>
+      <wsdl:input message="p1:IntegratedConfigurationDeleteRequest"/>
+      <wsdl:output message="p1:ConfigurationObjectModifyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="OpenForEdit">
+      <wsdl:documentation/>
+      <wsdl:input message="p1:IntegratedConfigurationOpenForEditRequest"/>
+      <wsdl:output message="p1:IntegratedConfiguration750OpenForEditResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:documentation/>
+      <wsdl:input message="p1:IntegratedConfigurationQueryRequest"/>
+      <wsdl:output message="p1:IntegratedConfigurationQueryResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <wsdl:documentation/>
+      <wsdl:input message="p1:IntegratedConfiguration750CreateRequest"/>
+      <wsdl:output message="p1:ConfigurationObjectModifyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Revert">
+      <wsdl:documentation/>
+      <wsdl:input message="p1:IntegratedConfigurationRevertRequest"/>
+      <wsdl:output message="p1:LogMessageCollection"/>
+    </wsdl:operation>
+    <wsdl:operation name="Check">
+      <wsdl:documentation/>
+      <wsdl:input message="p1:IntegratedConfigurationCheckRequest"/>
+      <wsdl:output message="p1:LogMessageCollection"/>
+    </wsdl:operation>
+    <wsdl:operation name="Change">
+      <wsdl:documentation/>
+      <wsdl:input message="p1:IntegratedConfiguration750ChangeRequest"/>
+      <wsdl:output message="p1:ConfigurationObjectModifyResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IntegratedConfiguration750InBinding" type="p1:IntegratedConfiguration750In">
+    <soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Read">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenForEdit">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Revert">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Check">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Change">
+      <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IntegratedConfiguration750InService">
+    <wsdl:port binding="bprf:IntegratedConfiguration750InBinding" name="IntegratedConfiguration750InPort" xmlns:bprf="http://sap.com/xi/BASIS">
+      <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="http://example.invalid:50000/IntegratedConfiguration750InService/IntegratedConfiguration750InImplBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

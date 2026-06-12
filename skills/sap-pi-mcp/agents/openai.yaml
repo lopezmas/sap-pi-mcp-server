@@ -1,0 +1,4 @@
+interface:
+  display_name: "SAP PI MCP"
+  short_description: "Use SAP PI MCP tools safely."
+  default_prompt: "Use the SAP PI MCP skill to inspect PI/PO ICOs, Operation Mappings, routing conditions, transformations, Message Mapping definitions/source/dependencies, and Value Mapping CSV exports."
