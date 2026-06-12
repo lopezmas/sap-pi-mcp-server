@@ -1,6 +1,6 @@
 [project]
 name = "sap-pi-mcp-server"
-version = "0.1.0"
+version = "1.0.0"
 description = "Local MCP server for SAP PI monitoring and Integration Directory metadata"
 requires-python = ">=3.8"
 dependencies = [

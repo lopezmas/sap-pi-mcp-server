@@ -50,7 +50,7 @@ class FastMCP:
                     {
                         "protocolVersion": "2024-11-05",
                         "capabilities": {"tools": {}},
-                        "serverInfo": {"name": self.name, "version": "0.1.0"},
+                        "serverInfo": {"name": self.name, "version": "1.0.0"},
                     },
                 )
 
