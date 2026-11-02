@@ -57,7 +57,7 @@ Restart Codex after changing the MCP config.
 
 - Configure credentials through environment variables or your MCP client's private config only.
 - Keep `.env`, generated CSV/Markdown exports, logs, and local cache files out of git.
-- The exposed MCP tools are intended for read-only discovery, monitoring, export, and validation. They do not expose create, change, delete, open-for-edit, or revert operations.
+- Discovery, monitoring, export, and validation tools are read-only. Optional message restart and cancellation require recovery opt-in and user approval; PROD requires two confirmations. No artifact editing, deletion, force-fail, or queue-lock manipulation is exposed.
 - Use least-privilege SAP PI/PO accounts. Prefer HTTPS SAP endpoints where your PI/PO system supports them.
 
 ## Run Locally
@@ -102,7 +102,7 @@ Validate this communication channel and summarize any SAP PI/PO check messages.
 
 ## Tools
 
-The MCP server intentionally exposes read-only discovery and validation tools for PI-to-CPI migration analysis.
+The MCP server exposes read-only discovery and validation tools for PI-to-CPI migration analysis, plus separately gated message recovery tools.
 
 - `get_pi_channel_status`
 - `search_failed_messages`
@@ -172,3 +172,10 @@ python export_value_mappings_csv.py value_mappings.csv --scheme-id SAP --scheme-
 ## License
 
 This project is licensed under the MIT License. See `LICENSE` for details.
+
+## EOIO recovery extension
+
+The server includes `inspect_eoio_messages`, `get_eoio_predecessor`,
+`get_pi_message_status`, `restart_pi_message`, and `cancel_pi_message`.
+Writes are disabled by default. See [EOIO_RECOVERY.md](EOIO_RECOVERY.md) for
+activation, approvals, recovery steps, and verification limits.

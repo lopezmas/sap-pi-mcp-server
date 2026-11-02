@@ -4,3 +4,11 @@ __pycache__/
 *.py[cod]
 all_icos.csv
 all_icos.md
+
+# Local operational recovery records: contain customer message identifiers.
+predecessor-review-*.json
+recovery-review-*.json
+recovery-review-*.md
+recovery-execution-*.json
+remaining-eoio-*.json
+sequence-*-cancellation-*.json

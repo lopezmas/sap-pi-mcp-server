@@ -13,6 +13,7 @@ import urllib.parse
 import zipfile
 import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape, quoteattr
+from pi_recovery import register as register_recovery_tools
 
 # Initialize FastMCP - this handles the heavy lifting
 mcp = FastMCP("SAP-PI-Monitor")
@@ -2214,6 +2215,8 @@ def check_configuration_scenario(configuration_scenario_id: str) -> str:
         return post_soap("ConfigurationScenarioInService/ConfigurationScenarioInImplBean", body)
     except Exception as e:
         return f"Error checking configuration scenario: {str(e)}"
+
+register_recovery_tools(mcp, pi_base_url, (PI_USER, PI_PWD), requests)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
