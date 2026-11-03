@@ -9,5 +9,5 @@ dependencies = [
 ]
 
 [tool.setuptools]
-py-modules = ["get_pi_channel_status", "export_value_mappings_csv", "pi_recovery"]
+py-modules = ["get_pi_channel_status", "export_value_mappings_csv", "pi_recovery", "pi_channel_control"]
 packages = ["mcp", "mcp.server"]

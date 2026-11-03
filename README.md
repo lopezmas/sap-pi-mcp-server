@@ -179,3 +179,24 @@ The server includes `inspect_eoio_messages`, `get_eoio_predecessor`,
 `get_pi_message_status`, `restart_pi_message`, and `cancel_pi_message`.
 Writes are disabled by default. See [EOIO_RECOVERY.md](EOIO_RECOVERY.md) for
 activation, approvals, recovery steps, and verification limits.
+
+### Start and stop communication channels
+
+Use `start_pi_channel` or `stop_pi_channel` with exact `party`, `component` and
+`channel` values. Pass `party=""` for a partyless channel. The default dry run
+makes no SAP request and returns the exact confirmation phrase. After explicit
+user approval, pass that phrase as `confirmation` and set `dry_run=false`.
+
+Set `SAP_PI_ENVIRONMENT` to the actual target (`dev`, `test` or `prod`) in the
+MCP registration. Writes require `SAP_PI_ENABLE_CHANNEL_CONTROL=true`.
+PROD additionally requires `SAP_PI_ENABLE_PROD_CHANNEL_CONTROL=true` and a
+second separate user approval, entered as the preview's `second_confirmation`.
+Keep both switches off unless specifically authorized. Restart the MCP server
+process for each registration to load the tools or apply environment changes.
+
+SAP requires External Control mode in PIMON and the AS Java actions
+`xi_af_channel_admin_display` and `xi_af_channel_admin_modify`. See
+[SAP external channel control](https://help.sap.com/docs/SAP_NETWEAVER_740/0158596e99ae4f7386f5c302d343368c/4ba2862d182b63a3e10000000a42189c.html).
+The tools read the exact channel before and after a write. Verification checks
+activation state, not adapter health. If verification fails, inspect PIMON
+before retrying; a timeout may have occurred after SAP received the request.

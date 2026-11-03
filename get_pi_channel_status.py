@@ -13,6 +13,7 @@ import urllib.parse
 import zipfile
 import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape, quoteattr
+from pi_channel_control import register as register_channel_control_tools
 from pi_recovery import register as register_recovery_tools
 
 # Initialize FastMCP - this handles the heavy lifting
@@ -2217,9 +2218,7 @@ def check_configuration_scenario(configuration_scenario_id: str) -> str:
         return f"Error checking configuration scenario: {str(e)}"
 
 register_recovery_tools(mcp, pi_base_url, (PI_USER, PI_PWD), requests)
+register_channel_control_tools(mcp, pi_base_url, (PI_USER, PI_PWD), requests)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
-
-
-
